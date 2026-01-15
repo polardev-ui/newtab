@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<!---- 
+made by polar (josh) 
+don't skid this extension pls 
+it took a while to make ---->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Tab</title>
+    <script src="marked.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scene">
+        <div class="card" id="main-card">
+            
+            <div class="card-face card-front">
+                <div class="container">
+                    <h1 class="greeting">
+                        <span class="word">Welcome</span>
+                        <span class="word">back,</span>
+                        <span class="word">Josh.</span>
+                    </h1>
+                    <div id="time" class="time-display"></div>
+                    <div class="search-section">
+                        <input type="text" id="search-input" placeholder="Type :ai to chat..." autocomplete="off">
+                        <div id="suggestions" class="suggestions-box"></div>
+                    </div>
+                    <div id="news-container" class="news-grid"></div>
+                </div>
+            </div>
+
+            <div class="card-face card-back">
+                <button id="back-btn">← Back to Search</button>
+        
+                <div class="chat-container">
+                    <div id="chat-history"></div>
+                    <div id="chat-output"></div>
+                    <div id="scroll-anchor"></div> 
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="followup-input" placeholder="Type a message...">
+                    <button id="send-followup">Send</button>
+                </div>
+            </div>
+
+        </div> </div> <script src="script.js" defer></script>
+</body>
+</html>

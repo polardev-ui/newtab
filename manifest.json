@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Custom New Tab by Polar",
+  "description": "A custom new tab dashboard with news, search suggestions, AI search, and more.",
+  "version": "2.1",
+  "permissions": ["storage", "search"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [ 
+    "https://newsapi.org/*",
+    "https://suggestqueries.google.com/*",
+    "https://text.pollinations.ai/*",
+    "https://cdn.jsdelivr.net/*",
+    "https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"
+  ]
+}
