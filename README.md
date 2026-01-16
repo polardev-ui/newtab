@@ -60,12 +60,18 @@ I also added an AI chatbot into the search engine, it isn't too secret to be hon
 2. Find this line: `<div id="news-container" class="news-grid"></div>` or line 25
 3. Simply delete the line or comment it out
 
+## Search Engine
+**Search engine details**
+CustomNewTab uses a custom search engine called Newt, which is currently in development. I'm making Newt just for this while keeping it open source for others to modify/use if they'd like, and if you'd like to access Newt's source code, you can do so here: https://github.com/polardev-ui/newt
+
 ## Common Questions
 - Q. Why can't I scroll in the AI chat? A. I'm trying to fix this issue, I can't seem to determine what the problem is, but for now, just hold down your left mouse button over text to select it, and move your cursor to the bottom or top of the screen to scroll up and down.
 
 - Q. How do I remove the AI feature? A. I know there are some people who refuse to use AI related products. The AI can not function or use any resources UNLESS you activate it by sending it a prompt. The AI itself doesn't run on water, it runs with Solar Power.
 
 - Q. Why aren't the news posts & search recommendations showing? A. Sometimes, workplaces like schools have Google's search recommendation URL blocked, stopping search suggestions from appearing. News posts are the same story.
+
+- Q. How do I change my search engine? A. For right now, I force users to use Newt, just for your own safety, and because I had trouble adding in Google and other search engines due to "Bot Detected!" issues.
 
 ## Libraries
 **All of the libraries used (FOR DEVELOPERS/DEBUGGERS)**
