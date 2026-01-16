@@ -93,8 +93,16 @@ body {
 }
 
 #search-input {
-    width: 100%; padding: 18px 30px; background: #0a0a0a; border: 1px solid #222;
-    border-radius: 50px; color: white; font-size: 1.1rem; outline: none;
+    width: 100%;      /* Fills the 500px wrapper */
+    padding: 15px 25px;
+    border-radius: 50px; /* Back to a perfect pill */
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1.1rem;
+    outline: none;
+    box-sizing: border-box; /* CRITICAL: prevents padding from stretching the bar */
+    transition: all 0.3s ease;
 }
 
 #back-btn {
@@ -115,6 +123,7 @@ body {
     -webkit-overflow-scrolling: touch;
     z-index: 5;
     position: relative;
+    height: calc(100% - 180px);
 }
 
 .chat-container::-webkit-scrollbar {
@@ -141,13 +150,49 @@ body {
     font-size: 1.8rem;
     line-height: 1.6;
     color: #fff;
+    position: relative;
+    display: inline-block; /* Helps keep cursor attached to text */
+    width: 100%;
 }
-.ai-entry p, 
-.ai-entry li, 
 .ai-entry h1, 
 .ai-entry h2, 
 .ai-entry table {
     animation: aiStreamIn 0.5s ease-out forwards;
+}
+
+.ai-entry.typing::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 1.8rem;
+    background: #fff;
+    margin-left: 8px;
+    vertical-align: middle;
+    animation: cursorBlink 0.8s infinite;
+    line-height: 1;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.ai-entry li {
+    margin-bottom: 1.2rem;
+}
+
+.ai-entry p {
+    display: inline; /* Keeps cursor on the same line */
+    margin-bottom: 1.2rem;
+}
+
+.ai-entry * {
+    animation: none !important; /* Prevents character-by-character flashing */
+}
+
+@keyframes liveFadeIn {
+    from { opacity: 0; filter: blur(4px); transform: translateY(5px); }
+    to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
 .ai-word {
@@ -192,9 +237,58 @@ body {
 .search-section {
     position: relative;
     width: 100%;
-    max-width: 500px; 
-    margin: 0 auto; 
+    max-width: 500px; /* This controls the "normal" length */
+    margin: 0 auto;   /* This keeps it centered */
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.suggestions-box {
+    position: absolute;
+    /* This places it 10px below the search bar */
+    top: calc(100% + 10px); 
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid #333;
+    border-radius: 20px; /* Overall box rounding */
+    z-index: 1000;
+    display: none;
+    overflow: hidden; /* Clips the child hover states to the rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.suggestion-item {
+    padding: 14px 20px;
+    color: #eee;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    transition: background 0.2s;
+    opacity: 0;
+    /* Animation: Slide Up + Fade In */
+    animation: suggestSlideUp 0.3s ease-out forwards;
+}
+
+@keyframes suggestSlideUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.suggestion-item:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.suggestion-item:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.suggestion-item:hover {
+    background: #222;
 }
 
 @keyframes aiStreamIn {
